@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+// Typography
+.text-center{
+    text-align: center;
+}
+// Layout
+.container{
+    width: 800px;
+    margin: 0 auto;
+}
+.flex{
+    display: flex;
+}
+.jc-center{
+    justify-content: center;
+}
+.ai-center{
+    align-items: center;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+
+// Box
+.box-wrap{
+    background-color: #fff;
+    padding: 2px;
+    clip-path: $base;
+
+    .box{
+        padding: 20px;
+        text-align: center;
+        background-color: $col-primary;
+        clip-path: $base;
+    }
+}
+
+// Media Queries
+@media screen and (max-width: 850px) {
+    .container{
+        width: 100%;
+    }
+}
