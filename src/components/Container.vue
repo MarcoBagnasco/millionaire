@@ -68,7 +68,6 @@ export default {
             if(this.done.length != this.questions.length){
                 let randNum = Math.floor(Math.random() * this.totQuest);
                 while(this.done.includes(randNum)){
-                    console.log(randNum);
                     randNum = Math.floor(Math.random() * this.totQuest);
                 }
                 this.num = randNum;

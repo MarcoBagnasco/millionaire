@@ -20,6 +20,8 @@ export default {
             current: '',
             correct: false,
             uncorrect: false,
+            correctSound: new Audio('/sounds/correct.mp3'),
+            uncorrectSound: new Audio('/sounds/uncorrect.mp3'),
         }
     },
     methods:{
@@ -31,9 +33,11 @@ export default {
                 this.active = false;
                 this.current = item;
                 if(item === this.quest.rightAnswer){    
+                    this.correctSound.play();
                     this.correct = true;
                     this.$emit('resp', true);
                 } else {    
+                    this.uncorrectSound.play();
                     this.uncorrect = true;
                     this.$emit('resp', false);
                 }
