@@ -2,7 +2,7 @@
     <div class="main-content flex">
         <!-- Header -->
         <header class="main-header text-center">
-            <img src="../assets/images/logo.png" alt="">
+            <img src="../assets/images/logo.png" alt="logo">
         </header>
         <!-- Game Area -->
         <div class="game-area">
@@ -141,5 +141,16 @@ export default {
                 background-color: #158a15;
             }
         }
+    }
+
+    @media screen and (max-width:500px){
+        .main-header {
+            padding: 10px;
+
+            img{
+                max-width: 30%;
+                max-height: 250px;
+            }
+        }      
     }
 </style>

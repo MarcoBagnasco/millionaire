@@ -2,7 +2,7 @@
     <div class="container">
         <div class="flex jc-center wrap">
             <div v-for="(item, index) in quest.answers" :key="index" class="box-ans box-wrap">
-                <div class="box" :class="{choice: active,correct : correct && current == item, uncorrect : uncorrect && current == item}" @click="response(item)">{{item}}</div>
+                <div class="box" :class="{choice: active,correct : correct && current == item, uncorrect : uncorrect && current == item}" @click="response(item)">{{letters[index] + ': ' + item}}</div>
             </div>
         </div>
     </div>
@@ -16,6 +16,7 @@ export default {
     },
     data(){
         return {
+            letters: ['A', 'B', 'C', 'D'],
             active: true,
             current: '',
             correct: false,
@@ -101,6 +102,13 @@ export default {
 
             .box{
             clip-path: $small;
+            }
+        }
+
+        .box-ans{
+            .choice:hover{
+                color: #fff;
+                background-color: $col-primary;
             }
         }
     }
