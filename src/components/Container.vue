@@ -95,7 +95,7 @@ export default {
             this.done = [];
             this.exact = 0;
             this.wrong = 0;
-            this.randQuest();
+            this.$emit('finish')
         },
     }
 }
@@ -110,7 +110,7 @@ export default {
     }
     .main-header {
         padding: 40px;
-        background-color: #0d0d8b;
+        background-color: $col-secondary;
 
         img{
             max-width: 100%;
