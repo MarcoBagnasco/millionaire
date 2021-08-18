@@ -1,6 +1,6 @@
 <template>
   <main>
-    <Container v-if="game" @finish="finish"/>
+    <Container v-if="game" :climb="climb" @finish="finish"/>
     <Home v-else @playGame="playGame"/>
   </main>
 </template>
@@ -18,14 +18,19 @@ export default {
   data(){
     return {
       game: false,
+      climb: false,
     }
   },
   methods:{
-    playGame(){
+    playGame(params){
+      if(params){
+        this.climb = true;
+      }
       this.game = true;
     },
     finish(){
       this.game = false;
+      this.climb = false;
     }
   }
 }

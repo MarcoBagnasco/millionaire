@@ -13,10 +13,10 @@
             </div>
             <div class="flex jc-center ai-center wrap">
                 <div class="box-wrap choice">
-                    <div class="box" @click="$emit('playGame')">Scalata al Milione</div>
+                    <div class="box" @click="$emit('playGame', true)">Scalata al Milione</div>
                 </div>
                 <div class="box-wrap choice">
-                    <div class="box" @click="$emit('playGame')">Tutte le domande</div>
+                    <div class="box" @click="$emit('playGame', false)">Tutte le domande</div>
                 </div>
             </div>
         </div>
@@ -69,11 +69,9 @@ export default {
             cursor: pointer;
         }
 
-        .img-wrap{
-            height: 100%;
-             img{
-                 height: 80%;
-             }
+        img{
+            max-height: 80%;
+            max-width: 100%;
         }
 
         .mode{
@@ -96,6 +94,17 @@ export default {
                 &:hover .box{
                     color: $col-primary;
                     background-color: #e0a91b;
+                }
+            }
+        }
+    }
+
+    // Media Query
+    @media screen and (max-width:639px){
+        .home{
+            .mode{
+                .box-wrap{
+                    width: 300px;
                 }
             }
         }

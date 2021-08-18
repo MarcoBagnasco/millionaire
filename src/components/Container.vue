@@ -9,13 +9,19 @@
             <!-- Questions -->
             <div v-if="!finish">
                 <Question :quest="questions[num]"/>
-                <Answers :quest="questions[num]" @change="randQuest" @resp="add"/>
+                <Answers :climb="climb" :quest="questions[num]" @changeQuest="randQuest" @resp="add" @end="endGame"/>
+                <Climb v-if="climb" :done="done" :money="money"/>
             </div>
             <!-- Results -->
             <div v-else class="text-center">
                 <h1>Gioco Terminato!</h1>
                 <h2>I tuoi risultati:</h2>
-                <div class="flex jc-center ai-center wrap">
+                <!-- Climb Results -->
+                <div v-if="climb">
+                    Hai vinto: € {{compute()}}
+                </div>
+                <!-- All Questions Results -->
+                <div v-else class="flex jc-center ai-center wrap">
                     <div class="results">
                         <h3>Risposte esatte:</h3>
                         <div>{{exact}}</div>
@@ -37,6 +43,7 @@
 <script>
 import Question from './Question.vue';
 import Answers from './Answers.vue';
+import Climb from './Climb.vue';
 import questions from '../questions.js';
 
 
@@ -45,6 +52,10 @@ export default {
     components:{
         Question,
         Answers,
+        Climb,
+    },
+    props:{
+        climb: Boolean,
     },
     data(){
         return {
@@ -55,6 +66,7 @@ export default {
             done: [],
             exact: 0,
             wrong: 0,
+            money:['500', '1.000', '1.500', '2.000', '3.000', '5.000', '7.000', '10.000', '15.000', '20.000', '30.000', '70.000', '150.000', '300.000'],
         }
     },
     created(){
@@ -73,7 +85,7 @@ export default {
                 this.num = randNum;
                 this.done.push(randNum);
             } else {
-                this.finish = true;
+                this.endGame();
             }
         },
 
@@ -87,6 +99,27 @@ export default {
                 this.wrong++;
             }
         },
+
+        /**
+         * End Game
+         */
+        endGame(){
+            this.finish = true;
+        },
+
+        /**
+         * Compute Gain
+         */
+        compute(){
+            if(this.done.length === 0){
+                return '0';
+            } else if(this.done.length > 1 && this.exact < 15){
+                return this.money[this.done.length - 2];
+            } else {
+                return '1 MILIONE!!!'
+            }
+        },
+
         /**
          * Resume Game
          */

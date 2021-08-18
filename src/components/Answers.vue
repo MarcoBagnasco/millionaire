@@ -13,6 +13,7 @@ export default {
     name: 'Answers',
     props:{
         quest: Object,
+        climb: Boolean,
     },
     data(){
         return {
@@ -41,6 +42,12 @@ export default {
                     this.uncorrectSound.play();
                     this.uncorrect = true;
                     this.$emit('resp', false);
+                    if(this.climb){
+                        setTimeout(() => {
+                            this.$emit('end');
+                        }, 2000);
+                        // this.$emit('end');
+                    }
                 }
                 setTimeout(this.next,2500)
             }
@@ -53,7 +60,7 @@ export default {
             this.current = '';
             this.correct = false;
             this.uncorrect = false;
-            this.$emit('change');
+            this.$emit('changeQuest');
         }
     }
 }
