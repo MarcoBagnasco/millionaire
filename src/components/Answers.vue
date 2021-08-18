@@ -46,7 +46,6 @@ export default {
                         setTimeout(() => {
                             this.$emit('end');
                         }, 2000);
-                        // this.$emit('end');
                     }
                 }
                 setTimeout(this.next,2500)

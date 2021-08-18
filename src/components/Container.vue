@@ -67,6 +67,7 @@ export default {
             exact: 0,
             wrong: 0,
             money:['500', '1.000', '1.500', '2.000', '3.000', '5.000', '7.000', '10.000', '15.000', '20.000', '30.000', '70.000', '150.000', '300.000'],
+            questClimb: 15,
         }
     },
     created(){
@@ -77,7 +78,7 @@ export default {
          * Show random Question
          */
         randQuest(){
-            if(this.done.length != this.questions.length){
+            if((!this.climb && this.done.length != this.totQuest) || (this.climb && this.done.length != this.questClimb)){
                 let randNum = Math.floor(Math.random() * this.totQuest);
                 while(this.done.includes(randNum)){
                     randNum = Math.floor(Math.random() * this.totQuest);
@@ -113,7 +114,7 @@ export default {
         compute(){
             if(this.done.length === 0){
                 return '0';
-            } else if(this.done.length > 1 && this.exact < 15){
+            } else if(this.done.length > 1 && this.exact < this.questClimb){
                 return this.money[this.done.length - 2];
             } else {
                 return '1 MILIONE!!!'
