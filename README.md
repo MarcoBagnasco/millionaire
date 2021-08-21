@@ -1,4 +1,6 @@
-# milionaire
+# Who wants to be a Millionaire?
+### App inspired by the game "Who wants to be a Millionaire?", with two mode: "Climbed to the Million" and "All Questions". (Italian Version)
+
 
 ## Project setup
 ```
