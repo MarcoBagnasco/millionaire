@@ -112,7 +112,7 @@ export default {
          * Compute Gain
          */
         compute(){
-            if(this.done.length === 0){
+            if(this.done.length === 1){
                 return '0';
             } else if(this.done.length > 1 && this.exact < this.questClimb){
                 return this.money[this.done.length - 2];
